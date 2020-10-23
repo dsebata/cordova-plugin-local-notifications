@@ -521,7 +521,9 @@ exports.fireEvent = function (event) {
         args[0].data = JSON.parse(args[0].data);
     }
 
-    args = args.reverse();
+    if(args[1]) {
+        args[0].event = args[1];
+    }
 
     for (var i = 0; i < listener.length; i++) {
         var fn    = listener[i][0],
@@ -531,6 +533,7 @@ exports.fireEvent = function (event) {
             fn = scope[fn];
         }
 
+        console.log(args);
         fn.apply(scope, args);
     }
 };
