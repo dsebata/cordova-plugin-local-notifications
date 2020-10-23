@@ -529,7 +529,7 @@ exports.fireEvent = function (event) {
             fn = scope[fn];
         }
 
-        fn.apply(scope, args);
+        fn.apply(scope, [{args: args}]);
     }
 };
 
